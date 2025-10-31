@@ -27,6 +27,14 @@ namespace FunciionarioDesafio.Service.Service
                 throw new InvalidOperationException("Funcionário com status 'Trabalhando' não pode estar 'Suspenso' ou 'Demitido'.");
             }
 
+            if (funcionario.SituacaoEmpresa == SituacaoEmpresa.Concluido &&
+                  funcionario.Situacao != Situacao.Inativo)
+            {
+                throw new InvalidOperationException("Funcionário com vínculo 'Concluído' só pode estar 'Inativo'.");
+            }
+
+
+
             return await _repository.AdicionarFuncionario(funcionario);
         }
     }

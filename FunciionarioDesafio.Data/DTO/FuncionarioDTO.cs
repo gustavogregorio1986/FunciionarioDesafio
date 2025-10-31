@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace FunciionarioDesafio.Data.DTO
@@ -11,7 +12,7 @@ namespace FunciionarioDesafio.Data.DTO
     {
         public int Id { get; set; }
 
-        public string? NomeFuncioanrio { get; set; }
+        public string? NomeFuncionario { get; set; }
 
         public string? EmailFuncionario { get; set; }
 
@@ -25,7 +26,8 @@ namespace FunciionarioDesafio.Data.DTO
 
         public SituacaoEmpresa? SituacaoEmpresa { get; set; }
 
-        public DateTime DateTwermino { get; set; }
+        [JsonIgnore]
+        public DateTime? DateTermino { get; set; }
 
         public decimal Salario { get; set; }
 

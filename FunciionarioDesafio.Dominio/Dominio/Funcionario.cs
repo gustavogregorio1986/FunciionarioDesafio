@@ -11,7 +11,7 @@ namespace FunciionarioDesafio.Dominio.Dominio
     {
         public int Id { get; set; }
 
-        public string? NomeFuncioanrio { get; set; }
+        public string? NomeFuncionario { get; set; }
 
         public string? EmailFuncionario { get; set; }
 
@@ -25,7 +25,7 @@ namespace FunciionarioDesafio.Dominio.Dominio
 
         public SituacaoEmpresa? SituacaoEmpresa { get; set; }
 
-        public DateTime DateTwermino { get; set; }
+        public DateTime? DateTermino { get; set; }
 
         public decimal Salario { get; set; }
 

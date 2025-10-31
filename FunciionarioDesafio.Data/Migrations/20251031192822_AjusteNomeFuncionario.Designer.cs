@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FunciionarioDesafio.Data.Migrations
 {
     [DbContext(typeof(FuncionarioDesafioContext))]
-    [Migration("20251031172706_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251031192822_AjusteNomeFuncionario")]
+    partial class AjusteNomeFuncionario
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,7 +45,7 @@ namespace FunciionarioDesafio.Data.Migrations
                     b.Property<DateTime>("Datainicio")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime>("DateTwermino")
+                    b.Property<DateTime?>("DateTermino")
                         .HasColumnType("datetime");
 
                     b.Property<string>("EmailComporativo")
@@ -61,7 +61,7 @@ namespace FunciionarioDesafio.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("NomeFuncioanrio")
+                    b.Property<string>("NomeFuncionario")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");

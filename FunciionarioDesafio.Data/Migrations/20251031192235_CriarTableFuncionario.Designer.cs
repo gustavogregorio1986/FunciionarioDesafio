@@ -4,6 +4,7 @@ using FunciionarioDesafio.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FunciionarioDesafio.Data.Migrations
 {
     [DbContext(typeof(FuncionarioDesafioContext))]
-    partial class FuncionarioDesafioContextModelSnapshot : ModelSnapshot
+    [Migration("20251031192235_CriarTableFuncionario")]
+    partial class CriarTableFuncionario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -59,7 +61,7 @@ namespace FunciionarioDesafio.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<string>("NomeFuncionario")
+                    b.Property<string>("NomeFuncioanrio")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");

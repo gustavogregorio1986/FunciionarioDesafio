@@ -17,7 +17,7 @@ namespace FunciionarioDesafio.Data.Map
 
             builder.HasKey(f => f.Id);
 
-            builder.Property(f => f.NomeFuncioanrio)
+            builder.Property(f => f.NomeFuncionario)
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnType("varchar(50)");
@@ -43,9 +43,11 @@ namespace FunciionarioDesafio.Data.Map
 
             builder.Property(f => f.SituacaoEmpresa)
                 .HasMaxLength(50)
+                .IsRequired(false)
                 .HasColumnType("varchar(50)");
 
-            builder.Property(f => f.DateTwermino)
+            builder.Property(f => f.DateTermino)
+                .IsRequired(false)
                .HasColumnType("datetime");
 
             builder.Property(f => f.Salario)

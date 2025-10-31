@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FunciionarioDesafio.Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class CriarTableFuncionario : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,7 +22,7 @@ namespace FunciionarioDesafio.Data.Migrations
                     EmailComporativo = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Datainicio = table.Column<DateTime>(type: "datetime", nullable: false),
                     SituacaoEmpresa = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
-                    DateTwermino = table.Column<DateTime>(type: "datetime", nullable: false),
+                    DateTermino = table.Column<DateTime>(type: "datetime", nullable: true),
                     Salario = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Empresa = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Situacao = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false)
