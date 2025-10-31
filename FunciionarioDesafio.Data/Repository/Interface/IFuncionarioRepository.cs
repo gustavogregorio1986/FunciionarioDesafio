@@ -10,5 +10,7 @@ namespace FunciionarioDesafio.Data.Repository.Interface
     public interface IFuncionarioRepository
     {
         Task<Funcionario> AdicionarFuncionario(Funcionario funcionario);
+
+        Task<Funcionario?> BuscarPorNomeAsync(string nome);
     }
 }

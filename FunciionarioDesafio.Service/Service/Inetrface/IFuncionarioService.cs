@@ -10,5 +10,7 @@ namespace FunciionarioDesafio.Service.Service.Inetrface
     public interface IFuncionarioService
     {
         Task<Funcionario> AdicionarFuncionario(Funcionario funcionario);
+
+        Task<string> BuscarPorNomeAsync(string nome);
     }
 }

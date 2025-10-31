@@ -37,5 +37,35 @@ namespace FunciionarioDesafio.Service.Service
 
             return await _repository.AdicionarFuncionario(funcionario);
         }
+
+        private string CalcularStatus(Funcionario funcionario)
+        {
+            var hoje = DateTime.Today;
+
+            if (funcionario.Situacao == Situacao.Ativo &&
+                funcionario.Datainicio <= hoje &&
+                funcionario.DateTermino == null)
+                return "Admissão";
+
+            if (funcionario.Situacao == Situacao.Suspenso)
+                return "Suspenso";
+
+            if (funcionario.DateTermino.HasValue && funcionario.DateTermino.Value < hoje)
+                return "Encerrar vínculo";
+
+            return "Status indefinido";
+        }
+
+        public async Task<string> BuscarPorNomeAsync(string nome)
+        {
+            var funcionario = await _repository.BuscarPorNomeAsync(nome);
+
+            if (funcionario == null)
+                return "Funcionário não encontrado.";
+
+            return CalcularStatus(funcionario); // ✅ Aqui retorna só o texto do status
+
+
+        }
     }
 }

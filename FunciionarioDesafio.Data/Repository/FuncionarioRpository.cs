@@ -1,6 +1,7 @@
 ﻿using FunciionarioDesafio.Data.Context;
 using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Dominio.Dominio;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,5 +37,14 @@ namespace FunciionarioDesafio.Data.Repository
             await _db.SaveChangesAsync();
             return funcionario;
         }
+
+        public async Task<Funcionario?> BuscarPorNomeAsync(string nome)
+        {
+            return await _db.Funcionarios
+            .FirstOrDefaultAsync(f => f.NomeFuncionario == nome);
+        }
+
+
     }
 }
+

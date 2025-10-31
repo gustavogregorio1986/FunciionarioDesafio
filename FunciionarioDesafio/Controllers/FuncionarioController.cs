@@ -26,6 +26,13 @@ namespace FunciionarioDesafio.Controllers
             return Ok("👋 Bem-vindo à API de cadastro de funcionários!");
         }
 
+        [HttpGet("status-por-nome/{nome}")]
+        public async Task<IActionResult> ObterStatusPorNome(string nome)
+        {
+            var status = await _service.BuscarPorNomeAsync(nome);
+            return Ok($"Status de {nome}: {status}");
+        }
+
 
 
         [HttpPost]
