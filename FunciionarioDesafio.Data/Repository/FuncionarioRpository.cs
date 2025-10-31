@@ -43,8 +43,6 @@ namespace FunciionarioDesafio.Data.Repository
             return await _db.Funcionarios
             .FirstOrDefaultAsync(f => f.NomeFuncionario == nome);
         }
-
-
     }
 }
 
