@@ -1,4 +1,8 @@
 using FunciionarioDesafio.Data.Context;
+using FunciionarioDesafio.Data.Repository;
+using FunciionarioDesafio.Data.Repository.Interface;
+using FunciionarioDesafio.Service.Service;
+using FunciionarioDesafio.Service.Service.Inetrface;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +19,11 @@ builder.Services.AddDbContext<FuncionarioDesafioContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")
         ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.")
     ));
+
+builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRpository>();
+builder.Services.AddScoped<IFuncionarioService, FuncionarioService>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
