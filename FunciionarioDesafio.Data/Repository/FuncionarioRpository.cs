@@ -18,8 +18,20 @@ namespace FunciionarioDesafio.Data.Repository
             _db = db;
         }
 
+        private async Task ExecutarAutomacaoAsync(Funcionario funcionario)
+        {
+            Console.WriteLine($"[LOG] Funcionário {funcionario.NomeFuncionario} cadastrado em {DateTime.Now}");
+
+            await Task.Run(() =>
+            {
+                Console.WriteLine($"[EMAIL] Enviando boas-vindas para {funcionario.EmailFuncionario}");
+            });
+        }
+
         public async Task<Funcionario> AdicionarFuncionario(Funcionario funcionario)
         {
+            await ExecutarAutomacaoAsync(funcionario);
+
             await _db.Funcionarios.AddAsync(funcionario);
             await _db.SaveChangesAsync();
             return funcionario;

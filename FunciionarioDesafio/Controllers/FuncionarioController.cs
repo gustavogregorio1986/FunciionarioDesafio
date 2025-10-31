@@ -20,6 +20,14 @@ namespace FunciionarioDesafio.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("boas-vindas")]
+        public IActionResult BoasVindas()
+        {
+            return Ok("👋 Bem-vindo à API de cadastro de funcionários!");
+        }
+
+
+
         [HttpPost]
         [Route("AdicionarFuncionario")]
         public async Task<IActionResult> AdicionarFuncionario([FromBody] FuncionarioDTO dto)
@@ -29,7 +37,9 @@ namespace FunciionarioDesafio.Controllers
             try
             {
                 var resultado = await _service.AdicionarFuncionario(funcionario);
-                return Ok(resultado);
+                return Ok($"Funcionário cadastrado com sucesso. Bem-vindo, {resultado.NomeFuncionario}!");
+
+
             }
             catch (InvalidOperationException ex)
             {
