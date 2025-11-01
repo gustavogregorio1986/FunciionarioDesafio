@@ -1,4 +1,5 @@
 ﻿using FunciionarioDesafio.Data.Context;
+using FunciionarioDesafio.Data.DTO;
 using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Dominio.Dominio;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,23 @@ namespace FunciionarioDesafio.Data.Repository
         {
             return await _db.Funcionarios
             .FirstOrDefaultAsync(f => f.NomeFuncionario == nome);
+        }
+
+        public async Task<(IEnumerable<Funcionario>, int)> BuscarComFiltroAsync(FuncionarioFiltroDTO filtro)
+        {
+            var query = _db.Funcionarios.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(filtro.Nome))
+                query = query.Where(f => f.NomeFuncionario.Contains(filtro.Nome));
+
+            var total = await query.CountAsync();
+
+            var funcionarios = await query
+                .Skip((filtro.Pagina - 1) * filtro.TamanhoPagina)
+                .Take(filtro.TamanhoPagina)
+                .ToListAsync();
+
+            return (funcionarios, total);
         }
     }
 }

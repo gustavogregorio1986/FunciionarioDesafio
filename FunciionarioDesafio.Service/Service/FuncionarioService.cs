@@ -1,4 +1,5 @@
-﻿using FunciionarioDesafio.Data.Repository.Interface;
+﻿using FunciionarioDesafio.Data.DTO;
+using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Dominio.Dominio;
 using FunciionarioDesafio.Dominio.Enum;
 using FunciionarioDesafio.Service.Service.Inetrface;
@@ -64,6 +65,21 @@ namespace FunciionarioDesafio.Service.Service
                 return "Funcionário não encontrado.";
 
             return CalcularStatus(funcionario); // ✅ Aqui retorna só o texto do status
+
+
+        }
+
+        public async Task<PaginadoDTO<FuncionarioDTO>> ListarPaginadoAsync(FuncionarioFiltroDTO filtro)
+        {
+            var (entidades, total) = await _repository.BuscarComFiltroAsync(filtro);
+
+            var dtos = entidades.Select(f => new FuncionarioDTO
+            {
+                NomeFuncionario = f.NomeFuncionario,
+                EmailComporativo = f.EmailComporativo
+            });
+
+            return new PaginadoDTO<FuncionarioDTO>(dtos, filtro.Pagina, filtro.TamanhoPagina, total);
 
 
         }

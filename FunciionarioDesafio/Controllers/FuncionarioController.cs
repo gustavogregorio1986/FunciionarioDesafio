@@ -53,5 +53,14 @@ namespace FunciionarioDesafio.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpGet("ListarPaginadoAsync")]
+        public async Task<IActionResult> Listar([FromQuery] FuncionarioFiltroDTO filtro)
+        {
+            var resultado = await _service.ListarPaginadoAsync(filtro);
+            return Ok(resultado);
+        }
+
+
     }
 }

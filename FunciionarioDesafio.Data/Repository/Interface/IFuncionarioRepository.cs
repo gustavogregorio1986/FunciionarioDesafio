@@ -1,4 +1,5 @@
-﻿using FunciionarioDesafio.Dominio.Dominio;
+﻿using FunciionarioDesafio.Data.DTO;
+using FunciionarioDesafio.Dominio.Dominio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace FunciionarioDesafio.Data.Repository.Interface
         Task<Funcionario> AdicionarFuncionario(Funcionario funcionario);
 
         Task<Funcionario?> BuscarPorNomeAsync(string nome);
+
+        Task<(IEnumerable<Funcionario>, int)> BuscarComFiltroAsync(FuncionarioFiltroDTO filtro);
     }
 }
