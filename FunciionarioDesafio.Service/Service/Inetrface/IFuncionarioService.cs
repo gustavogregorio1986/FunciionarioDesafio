@@ -17,5 +17,9 @@ namespace FunciionarioDesafio.Service.Service.Inetrface
         Task<PaginadoDTO<FuncionarioDTO>> ListarPaginadoAsync(FuncionarioFiltroDTO filtro);
 
         int CalcularAnosNaEmpresa(DateTime dataEntrada, DateTime dataTermino);
+
+        Task<PaginadoDTO<Funcionario>> BuscarConcluidosAsync(int pagina, int tamanho);
+
+        Task<PaginadoDTO<Funcionario>> BuscarTrabalhandoAsync(int pagina, int tamanho);
     }
 }

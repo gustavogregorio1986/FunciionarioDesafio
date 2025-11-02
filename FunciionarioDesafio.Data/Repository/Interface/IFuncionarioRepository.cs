@@ -15,5 +15,9 @@ namespace FunciionarioDesafio.Data.Repository.Interface
         Task<Funcionario?> BuscarPorNomeAsync(string nome);
 
         Task<(IEnumerable<Funcionario>, int)> BuscarComFiltroAsync(FuncionarioFiltroDTO filtro);
+
+        Task<(IEnumerable<Funcionario>, int)> BuscarConcluidosFiltroAsync(FuncionarioFiltroDTO filtro);
+
+        Task<(IEnumerable<Funcionario>, int)> BuscarTrabalhandoFiltroAsync(FuncionarioFiltroDTO filtro);
     }
 }

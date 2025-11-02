@@ -2,6 +2,7 @@
 using FunciionarioDesafio.Data.DTO;
 using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Dominio.Dominio;
+using FunciionarioDesafio.Dominio.Enum;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -49,12 +50,51 @@ namespace FunciionarioDesafio.Data.Repository
         {
             var query = _db.Funcionarios.AsQueryable();
 
+            // Filtro por nome (opcional)
             if (!string.IsNullOrWhiteSpace(filtro.Nome))
                 query = query.Where(f => f.NomeFuncionario.Contains(filtro.Nome));
+
+            // Filtro fixo por situação concluída
+            query = query.Where(f => f.SituacaoEmpresa == SituacaoEmpresa.Concluido);
 
             var total = await query.CountAsync();
 
             var funcionarios = await query
+                .OrderBy(f => f.NomeFuncionario)
+                .Skip((filtro.Pagina - 1) * filtro.TamanhoPagina)
+                .Take(filtro.TamanhoPagina)
+                .ToListAsync();
+
+            return (funcionarios, total);
+        }
+
+
+
+        public async Task<(IEnumerable<Funcionario>, int)> BuscarConcluidosFiltroAsync(FuncionarioFiltroDTO filtro)
+        {
+            var query = _db.Funcionarios
+              .Where(f => f.SituacaoEmpresa == SituacaoEmpresa.Concluido);
+
+            var total = await query.CountAsync();
+
+            var funcionarios = await query
+                .OrderBy(f => f.NomeFuncionario)
+                .Skip((filtro.Pagina - 1) * filtro.TamanhoPagina)
+                .Take(filtro.TamanhoPagina)
+                .ToListAsync();
+
+            return (funcionarios, total);
+        }
+
+        public async Task<(IEnumerable<Funcionario>, int)> BuscarTrabalhandoFiltroAsync(FuncionarioFiltroDTO filtro)
+        {
+            var query = _db.Funcionarios
+              .Where(f => f.SituacaoEmpresa == SituacaoEmpresa.Trabalhando);
+
+            var total = await query.CountAsync();
+
+            var funcionarios = await query
+                .OrderBy(f => f.NomeFuncionario)
                 .Skip((filtro.Pagina - 1) * filtro.TamanhoPagina)
                 .Take(filtro.TamanhoPagina)
                 .ToListAsync();

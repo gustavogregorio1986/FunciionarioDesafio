@@ -67,5 +67,23 @@ namespace FunciionarioDesafio.Controllers
             int anos = _service.CalcularAnosNaEmpresa(entrada, termino);
             return Ok(new { TempoDeEmpresa = anos });
         }
+
+        [HttpGet("BuscarConcluidos")]
+        public async Task<IActionResult> GetFuncionariosConcluidos([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
+        {
+            var resultado = await _service.BuscarConcluidosAsync(pagina, tamanho);
+            return Ok(resultado);
+
+
+        }
+
+        [HttpGet("BuscarTrabalhando")]
+        public async Task<IActionResult> GetFuncionariosTrablahndo([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
+        {
+            var resultado = await _service.BuscarTrabalhandoAsync(pagina, tamanho);
+            return Ok(resultado);
+
+
+        }
     }
 }
