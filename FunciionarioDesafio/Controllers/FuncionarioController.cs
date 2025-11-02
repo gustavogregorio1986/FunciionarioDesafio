@@ -61,6 +61,11 @@ namespace FunciionarioDesafio.Controllers
             return Ok(resultado);
         }
 
-
+        [HttpGet("tempo")]
+        public IActionResult GetTempoDeEmpresa(DateTime entrada, DateTime termino)
+        {
+            int anos = _service.CalcularAnosNaEmpresa(entrada, termino);
+            return Ok(new { TempoDeEmpresa = anos });
+        }
     }
 }

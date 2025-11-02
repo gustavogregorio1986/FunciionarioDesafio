@@ -20,8 +20,19 @@ namespace FunciionarioDesafio.Service.Service
             _repository = repository;
         }
 
+        public void ValidarDatas(DateTime dataInicio, DateTime? dateTermino)
+        {
+            if (dateTermino < dataInicio)
+            {
+                throw new ArgumentException("A data de término não pode ser menor que a data de início.");
+            }
+        }
+
+
         public async Task<Funcionario> AdicionarFuncionario(Funcionario funcionario)
         {
+            ValidarDatas(funcionario.Datainicio, funcionario.DateTermino);
+
             if (funcionario.SituacaoEmpresa == SituacaoEmpresa.Trabalhando &&
             (funcionario.Situacao == Situacao.Suspenso || funcionario.Situacao == Situacao.Demitido))
             {
@@ -55,6 +66,18 @@ namespace FunciionarioDesafio.Service.Service
                 return "Encerrar vínculo";
 
             return "Status indefinido";
+        }
+
+        public int CalcularAnosNaEmpresa(DateTime dataEntrada, DateTime dataTermino)
+        {
+            int anos = dataTermino.Year - dataEntrada.Year;
+
+            if (dataTermino < dataEntrada.AddYears(anos))
+            {
+                anos--;
+            }
+
+            return anos;
         }
 
         public async Task<string> BuscarPorNomeAsync(string nome)
