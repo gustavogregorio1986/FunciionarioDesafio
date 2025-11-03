@@ -84,10 +84,24 @@ namespace FunciionarioDesafio.Controllers
             return Ok(resultado);
         }
 
+        [HttpGet("BuscarInativas")]
+        public async Task<IActionResult> GetFuncionariosInativos([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
+        {
+            var resultado = await _service.BuscarInativarAsync(pagina, tamanho);
+            return Ok(resultado);
+        }
+
         [HttpGet("BuscarAtivas")]
         public async Task<IActionResult> GetFuncionariosAtivas([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarAtivarAsync(pagina, tamanho);
+            return Ok(resultado);
+        }
+
+        [HttpGet("BuscarSuspensos")]
+        public async Task<IActionResult> GetFuncionariosSuspenso([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
+        {
+            var resultado = await _service.BuscarSuspensoAsync(pagina, tamanho);
             return Ok(resultado);
         }
     }

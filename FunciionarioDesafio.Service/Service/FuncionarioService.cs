@@ -154,7 +154,7 @@ namespace FunciionarioDesafio.Service.Service
                 Situacao = Situacao.Ativo
             };
 
-            var (funcionarios, total) = await _repository.BuscarComFiltroAsync(filtro);
+            var (funcionarios, total) = await _repository.BuscarAtivarFiltroAsync(filtro);
 
             return new PaginadoDTO<Funcionario>(
                 funcionarios,
@@ -173,7 +173,26 @@ namespace FunciionarioDesafio.Service.Service
                 Situacao = Situacao.Inativo
             };
 
-            var (funcionarios, total) = await _repository.BuscarComFiltroAsync(filtro);
+            var (funcionarios, total) = await _repository.BuscarInativarFiltroAsync(filtro);
+
+            return new PaginadoDTO<Funcionario>(
+                funcionarios,
+                pagina,
+                tamanho,
+                total
+            );
+        }
+
+        public async Task<PaginadoDTO<Funcionario>> BuscarSuspensoAsync(int pagina, int tamanho)
+        {
+            var filtro = new FuncionarioFiltroDTO
+            {
+                Pagina = pagina,
+                TamanhoPagina = tamanho,
+                Situacao = Situacao.Suspenso
+            };
+
+            var (funcionarios, total) = await _repository.BuscarSuspensoFiltroAsync(filtro);
 
             return new PaginadoDTO<Funcionario>(
                 funcionarios,
