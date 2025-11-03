@@ -15,6 +15,6 @@ namespace FunciionarioDesafio.Data.DTO
 
         public SituacaoEmpresa? SituacaoEmpresa { get; set; }
 
-
+        public Situacao? Situacao { get; set; }
     }
 }

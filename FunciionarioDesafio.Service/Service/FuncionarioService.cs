@@ -144,6 +144,44 @@ namespace FunciionarioDesafio.Service.Service
                 total
             );
         }
+
+        public async Task<PaginadoDTO<Funcionario>> BuscarAtivarAsync(int pagina, int tamanho)
+        {
+            var filtro = new FuncionarioFiltroDTO
+            {
+                Pagina = pagina,
+                TamanhoPagina = tamanho,
+                Situacao = Situacao.Ativo
+            };
+
+            var (funcionarios, total) = await _repository.BuscarComFiltroAsync(filtro);
+
+            return new PaginadoDTO<Funcionario>(
+                funcionarios,
+                pagina,
+                tamanho,
+                total
+            );
+        }
+
+        public async Task<PaginadoDTO<Funcionario>> BuscarInativarAsync(int pagina, int tamanho)
+        {
+            var filtro = new FuncionarioFiltroDTO
+            {
+                Pagina = pagina,
+                TamanhoPagina = tamanho,
+                Situacao = Situacao.Inativo
+            };
+
+            var (funcionarios, total) = await _repository.BuscarComFiltroAsync(filtro);
+
+            return new PaginadoDTO<Funcionario>(
+                funcionarios,
+                pagina,
+                tamanho,
+                total
+            );
+        }
     }
 
 }

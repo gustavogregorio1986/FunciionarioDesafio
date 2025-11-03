@@ -101,6 +101,54 @@ namespace FunciionarioDesafio.Data.Repository
 
             return (funcionarios, total);
         }
+
+        public async Task<(IEnumerable<Funcionario>, int)> BuscarAtivarFiltroAsync(FuncionarioFiltroDTO filtro)
+        {
+            var query = _db.Funcionarios
+              .Where(f => f.Situacao == Situacao.Ativo);
+
+            var total = await query.CountAsync();
+
+            var funcionarios = await query
+                .OrderBy(f => f.NomeFuncionario)
+                .Skip((filtro.Pagina - 1) * filtro.TamanhoPagina)
+                .Take(filtro.TamanhoPagina)
+                .ToListAsync();
+
+            return (funcionarios, total);
+        }
+
+        public async Task<(IEnumerable<Funcionario>, int)> BuscarInativarFiltroAsync(FuncionarioFiltroDTO filtro)
+        {
+            var query = _db.Funcionarios
+              .Where(f => f.Situacao == Situacao.Inativo);
+
+            var total = await query.CountAsync();
+
+            var funcionarios = await query
+                .OrderBy(f => f.NomeFuncionario)
+                .Skip((filtro.Pagina - 1) * filtro.TamanhoPagina)
+                .Take(filtro.TamanhoPagina)
+                .ToListAsync();
+
+            return (funcionarios, total);
+        }
+
+        public async Task<(IEnumerable<Funcionario>, int)> BuscarSuspensoFiltroAsync(FuncionarioFiltroDTO filtro)
+        {
+            var query = _db.Funcionarios
+              .Where(f => f.Situacao == Situacao.Suspenso);
+
+            var total = await query.CountAsync();
+
+            var funcionarios = await query
+                .OrderBy(f => f.NomeFuncionario)
+                .Skip((filtro.Pagina - 1) * filtro.TamanhoPagina)
+                .Take(filtro.TamanhoPagina)
+                .ToListAsync();
+
+            return (funcionarios, total);
+        }
     }
 }
 
