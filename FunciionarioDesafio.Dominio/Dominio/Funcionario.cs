@@ -21,6 +21,8 @@ namespace FunciionarioDesafio.Dominio.Dominio
 
         public string? EmailComporativo { get; set; }
 
+        public string? Funcao { get; set; }
+
         public DateTime Datainicio { get; set; }
 
         public SituacaoEmpresa? SituacaoEmpresa { get; set; }

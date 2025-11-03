@@ -27,6 +27,11 @@ namespace FunciionarioDesafio.Data.Map
                .HasMaxLength(50)
                .HasColumnType("varchar(50)");
 
+            builder.Property(f => f.Funcao)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnType("varchar(50)");
+
             builder.Property(f => f.Cpf)
                .IsRequired()
                .HasMaxLength(11)
