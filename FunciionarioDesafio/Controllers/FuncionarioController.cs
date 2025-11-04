@@ -54,21 +54,24 @@ namespace FunciionarioDesafio.Controllers
             }
         }
 
-        [HttpGet("ListarPaginadoAsync")]
+        [HttpGet]
+        [Route("ListarPaginado")]
         public async Task<IActionResult> Listar([FromQuery] FuncionarioFiltroDTO filtro)
         {
             var resultado = await _service.ListarPaginadoAsync(filtro);
             return Ok(resultado);
         }
 
-        [HttpGet("tempo")]
+        [HttpGet]
+        [Route("tempo")]
         public IActionResult GetTempoDeEmpresa(DateTime entrada, DateTime termino)
         {
             int anos = _service.CalcularAnosNaEmpresa(entrada, termino);
             return Ok(new { TempoDeEmpresa = anos });
         }
 
-        [HttpGet("BuscarConcluidos")]
+        [HttpGet]
+        [Route("BuscarConcluidos")]
         public async Task<IActionResult> GetFuncionariosConcluidos([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarConcluidosAsync(pagina, tamanho);
@@ -77,28 +80,32 @@ namespace FunciionarioDesafio.Controllers
 
         }
 
-        [HttpGet("BuscarTrabalhando")]
+        [HttpGet]
+        [Route("BuscarTrabalhando")]
         public async Task<IActionResult> GetFuncionariosTrablahndo([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarTrabalhandoAsync(pagina, tamanho);
             return Ok(resultado);
         }
 
-        [HttpGet("BuscarInativas")]
+        [HttpGet]
+        [Route("BuscarInativas")]
         public async Task<IActionResult> GetFuncionariosInativos([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarInativarAsync(pagina, tamanho);
             return Ok(resultado);
         }
 
-        [HttpGet("BuscarAtivas")]
+        [HttpGet]
+        [Route("BuscarAtivas")]
         public async Task<IActionResult> GetFuncionariosAtivas([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarAtivarAsync(pagina, tamanho);
             return Ok(resultado);
         }
 
-        [HttpGet("BuscarSuspensos")]
+        [HttpGet]
+        [Route("BuscarSuspensos")]
         public async Task<IActionResult> GetFuncionariosSuspenso([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarSuspensoAsync(pagina, tamanho);

@@ -50,12 +50,6 @@ namespace FunciionarioDesafio.Data.Repository
         {
             var query = _db.Funcionarios.AsQueryable();
 
-            // Filtro por nome (opcional)
-            if (!string.IsNullOrWhiteSpace(filtro.Nome))
-                query = query.Where(f => f.NomeFuncionario.Contains(filtro.Nome));
-
-            // Filtro fixo por situação concluída
-            query = query.Where(f => f.SituacaoEmpresa == SituacaoEmpresa.Concluido);
 
             var total = await query.CountAsync();
 

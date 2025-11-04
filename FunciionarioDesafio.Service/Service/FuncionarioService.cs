@@ -98,8 +98,19 @@ namespace FunciionarioDesafio.Service.Service
 
             var dtos = entidades.Select(f => new FuncionarioDTO
             {
+                Id = f.Id,
                 NomeFuncionario = f.NomeFuncionario,
-                EmailComporativo = f.EmailComporativo
+                EmailFuncionario = f.EmailFuncionario,
+                Cpf = f.Cpf,
+                Celular = f.Celular,
+                EmailComporativo = f.EmailComporativo,
+                Funcao = f.Funcao,
+                Datainicio = f.Datainicio,
+                SituacaoEmpresa = f.SituacaoEmpresa,
+                DateTermino = f.DateTermino,
+                Salario = f.Salario,
+                Empresa = f.Empresa,
+                Situacao = f.Situacao
             });
 
             return new PaginadoDTO<FuncionarioDTO>(dtos, filtro.Pagina, filtro.TamanhoPagina, total);
