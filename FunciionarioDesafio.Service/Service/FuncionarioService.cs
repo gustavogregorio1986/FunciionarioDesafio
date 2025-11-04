@@ -231,6 +231,25 @@ namespace FunciionarioDesafio.Service.Service
                 total
             );
         }
+
+        public async Task<PaginadoDTO<Funcionario>> BuscarEnfermeiraAsync(int pagina, int tamanho)
+        {
+            var filtro = new FuncionarioFiltroDTO
+            {
+                Pagina = pagina,
+                TamanhoPagina = tamanho,
+                Funcao = "Enfermeira"
+            };
+
+            var (funcionarios, total) = await _repository.BuscarEnfermerioFiltroAsync(filtro);
+
+            return new PaginadoDTO<Funcionario>(
+                funcionarios,
+                pagina,
+                tamanho,
+                total
+            );
+        }
     }
 
 }

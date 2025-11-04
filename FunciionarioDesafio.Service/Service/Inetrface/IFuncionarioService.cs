@@ -24,6 +24,8 @@ namespace FunciionarioDesafio.Service.Service.Inetrface
 
         Task<PaginadoDTO<Funcionario>> BuscarDesenvolvedorAsync(int pagina, int tamanho);
 
+        Task<PaginadoDTO<Funcionario>> BuscarEnfermeiraAsync(int pagina, int tamanho);
+
         Task<PaginadoDTO<Funcionario>> BuscarAtivarAsync(int pagina, int tamanho);
 
         Task<PaginadoDTO<Funcionario>> BuscarInativarAsync(int pagina, int tamanho);

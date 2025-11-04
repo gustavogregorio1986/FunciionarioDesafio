@@ -97,6 +97,14 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
+        [Route("BuscarEnfermeira")]
+        public async Task<IActionResult> GetFuncionariosEnfermeira([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
+        {
+            var resultado = await _service.BuscarEnfermeiraAsync(pagina, tamanho);
+            return Ok(resultado);
+        }
+
+        [HttpGet]
         [Route("BuscarInativas")]
         public async Task<IActionResult> GetFuncionariosInativos([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
