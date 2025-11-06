@@ -45,5 +45,7 @@ namespace FunciionarioDesafio.Service.Service.Inetrface
         Task<decimal> ObterMediaSalarialAsync();
 
         Task<IEnumerable<FuncionarioIndiceDTO>> CalcularIndiceSalarialAsync(FuncionarioFiltroDTO filtro);
+
+        Task<byte[]> GerarPdfListaFuncionariosAsync(FuncionarioFiltroDTO filtro);
     }
 }

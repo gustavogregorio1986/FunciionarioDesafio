@@ -3,6 +3,7 @@ using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Dominio.Dominio;
 using FunciionarioDesafio.Dominio.Enum;
 using FunciionarioDesafio.Service.Service.Inetrface;
+using QuestPDF.Fluent;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -328,6 +329,13 @@ namespace FunciionarioDesafio.Service.Service
 
 
             return resultado;
+        }
+
+        public async Task<byte[]> GerarPdfListaFuncionariosAsync(FuncionarioFiltroDTO filtro)
+        {
+            var (funcionarios, _) = await _repository.BuscarComFiltroAsync(filtro);
+            var documento = new ListaFuncionariosDocument(funcionarios.ToList());
+            return documento.GeneratePdf();
         }
     }
 

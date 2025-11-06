@@ -4,6 +4,9 @@ using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Service.Service;
 using FunciionarioDesafio.Service.Service.Inetrface;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
+
+QuestPDF.Settings.License = LicenseType.Community;
 
 var builder = WebApplication.CreateBuilder(args);
 

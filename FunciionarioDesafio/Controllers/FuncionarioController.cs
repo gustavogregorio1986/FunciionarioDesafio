@@ -194,5 +194,12 @@ namespace FunciionarioDesafio.Controllers
             var resultado = await _service.CalcularIndiceSalarialAsync(filtro);
             return Ok(resultado);
         }
+
+        [HttpGet("gerar-pdf")]
+        public async Task<IActionResult> GerarPdf([FromQuery] FuncionarioFiltroDTO filtro)
+        {
+            var bytes = await _service.GerarPdfListaFuncionariosAsync(filtro);
+            return File(bytes, "application/pdf", "lista-funcionarios.pdf");
+        }
     }
 }
