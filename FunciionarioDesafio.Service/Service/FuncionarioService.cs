@@ -5,6 +5,7 @@ using FunciionarioDesafio.Dominio.Enum;
 using FunciionarioDesafio.Service.Service.Inetrface;
 using QuestPDF.Fluent;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -334,7 +335,10 @@ namespace FunciionarioDesafio.Service.Service
         public async Task<byte[]> GerarPdfListaFuncionariosAsync(FuncionarioFiltroDTO filtro)
         {
             var (funcionarios, _) = await _repository.BuscarComFiltroAsync(filtro);
-            var documento = new ListaFuncionariosDocument(funcionarios.ToList());
+            var lista = funcionarios.ToList();
+
+            var caminhoImagem = Path.Combine(Directory.GetCurrentDirectory(), "grafico.png");
+            var documento = new ListaFuncionariosDocument(funcionarios.ToList(), caminhoImagem);
             return documento.GeneratePdf();
         }
     }
