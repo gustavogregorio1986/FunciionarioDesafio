@@ -39,5 +39,7 @@ namespace FunciionarioDesafio.Data.Repository.Interface
         Task<Funcionario> ObterPorIdAsync(int id);
 
         Task RemoverAsyc(int id);
+
+        Task<decimal> CalcularMediaSalarialAsync();
     }
 }

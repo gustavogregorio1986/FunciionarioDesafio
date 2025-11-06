@@ -58,7 +58,7 @@ namespace FunciionarioDesafio.Data.Map
             builder.Property(f => f.Salario)
                .IsRequired()
                .HasMaxLength(50)
-               .HasColumnType("varchar(50)");
+               .HasColumnType("decimal(18,2)");
 
             builder.Property(f => f.Empresa)
               .IsRequired()

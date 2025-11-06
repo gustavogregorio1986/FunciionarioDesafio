@@ -303,6 +303,32 @@ namespace FunciionarioDesafio.Service.Service
         {
             await _repository.RemoverAsyc(id);
         }
+
+        public async Task<decimal> ObterMediaSalarialAsync()
+        {
+            return await _repository.CalcularMediaSalarialAsync();
+        }
+
+        public async Task<IEnumerable<FuncionarioIndiceDTO>> CalcularIndiceSalarialAsync(FuncionarioFiltroDTO filtro)
+        {
+            var (funcionarios, _) = await _repository.BuscarComFiltroAsync(filtro);
+
+            if (!funcionarios.Any())
+                return Enumerable.Empty<FuncionarioIndiceDTO>();
+
+            var media = funcionarios.Average(f => f.Salario);
+
+            var resultado = funcionarios.Select(f => new FuncionarioIndiceDTO
+            {
+                Id = f.Id,
+                NomeFuncionario = f.NomeFuncionario,
+                Salario = f.Salario,
+                IndiceSalarial = Math.Round(f.Salario / media, 2)
+            });
+
+
+            return resultado;
+        }
     }
 
 }

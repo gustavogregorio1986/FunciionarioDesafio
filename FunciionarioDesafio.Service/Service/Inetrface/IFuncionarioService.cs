@@ -41,5 +41,9 @@ namespace FunciionarioDesafio.Service.Service.Inetrface
         Task<Funcionario> ObterPorIdAsync(int id);
 
         Task RemoverAsyc(int id);
+
+        Task<decimal> ObterMediaSalarialAsync();
+
+        Task<IEnumerable<FuncionarioIndiceDTO>> CalcularIndiceSalarialAsync(FuncionarioFiltroDTO filtro);
     }
 }

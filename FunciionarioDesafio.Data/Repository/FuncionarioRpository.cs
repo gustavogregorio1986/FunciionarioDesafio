@@ -233,6 +233,13 @@ namespace FunciionarioDesafio.Data.Repository
         {
            return await _db.Funcionarios.FindAsync(id).AsTask();
         }
+
+        public async Task<decimal> CalcularMediaSalarialAsync()
+        {
+            return await _db.Funcionarios
+           .Where(f => f.Salario > 0) // opcional: evita dividir por zero
+           .AverageAsync(f => f.Salario);
+        }
     }
 }
 
