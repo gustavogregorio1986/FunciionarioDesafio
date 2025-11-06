@@ -127,5 +127,21 @@ namespace FunciionarioDesafio.Controllers
             var resultado = await _service.BuscarSuspensoAsync(pagina, tamanho);
             return Ok(resultado);
         }
+
+        [HttpGet]
+        [Route("BuscarEmpresa")]
+        public async Task<IActionResult> GetFuncionariosEmpresa([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
+        {
+            var resultado = await _service.BuscarEmpresaAsync(pagina, tamanho);
+            return Ok(resultado);
+        }
+
+        [HttpGet]
+        [Route("BuscarIbm")]
+        public async Task<IActionResult> BuscarIbmAsync([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
+        {
+            var resultado = await _service.BuscarIbmAsync(pagina, tamanho);
+            return Ok(resultado);
+        }
     }
 }

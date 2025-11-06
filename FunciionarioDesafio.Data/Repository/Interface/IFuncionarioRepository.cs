@@ -24,10 +24,14 @@ namespace FunciionarioDesafio.Data.Repository.Interface
 
         Task<(IEnumerable<Funcionario>, int)> BuscarEnfermerioFiltroAsync(FuncionarioFiltroDTO filtro);
 
+        Task<(IEnumerable<Funcionario>, int)> BuscarIbmFiltroAsync(FuncionarioFiltroDTO filtro);
+
         Task<(IEnumerable<Funcionario>, int)> BuscarAtivarFiltroAsync(FuncionarioFiltroDTO filtro);
 
         Task<(IEnumerable<Funcionario>, int)> BuscarInativarFiltroAsync(FuncionarioFiltroDTO filtro);
 
         Task<(IEnumerable<Funcionario>, int)> BuscarSuspensoFiltroAsync(FuncionarioFiltroDTO filtro);
+
+        Task<(IEnumerable<Funcionario>, int)> BuscarEmpresaFiltroAsync(FuncionarioFiltroDTO filtro);
     }
 }
