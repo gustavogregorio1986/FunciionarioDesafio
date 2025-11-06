@@ -35,5 +35,11 @@ namespace FunciionarioDesafio.Service.Service.Inetrface
         Task<PaginadoDTO<Funcionario>> BuscarEmpresaAsync(int pagina, int tamanho);
 
         Task<PaginadoDTO<Funcionario>> BuscarIbmAsync(int pagina, int tamanho);
+
+        Task AtualizarAsyc(Funcionario funcionario);
+
+        Task<Funcionario> ObterPorIdAsync(int id);
+
+        Task RemoverAsyc(int id);
     }
 }

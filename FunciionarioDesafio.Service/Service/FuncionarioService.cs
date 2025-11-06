@@ -288,6 +288,21 @@ namespace FunciionarioDesafio.Service.Service
                 total
             );
         }
+
+        public async Task AtualizarAsyc(Funcionario funcionario)
+        {
+            await _repository.AtualizarAsyc(funcionario);
+        }
+
+        public async Task<Funcionario> ObterPorIdAsync(int id)
+        {
+            return await _repository.ObterPorIdAsync(id);
+        }
+
+        public async Task RemoverAsyc(int id)
+        {
+            await _repository.RemoverAsyc(id);
+        }
     }
 
 }

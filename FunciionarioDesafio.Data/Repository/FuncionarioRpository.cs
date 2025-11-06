@@ -207,6 +207,32 @@ namespace FunciionarioDesafio.Data.Repository
 
             return (funcionarios, total);
         }
+
+        public Task AtualizarAsc(Funcionario funcionario)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task AtualizarAsyc(Funcionario funcionario)
+        {
+            _db.Funcionarios.Update(funcionario);
+            await _db.SaveChangesAsync();
+        }
+
+        public async Task RemoverAsyc(int id)
+        {
+            var funcionario = await ObterPorIdAsync(id);
+            if (funcionario != null)
+            {
+                _db.Funcionarios.Remove(funcionario);
+                await _db.SaveChangesAsync();
+            }
+        }
+
+        public async Task<Funcionario> ObterPorIdAsync(int id)
+        {
+           return await _db.Funcionarios.FindAsync(id).AsTask();
+        }
     }
 }
 

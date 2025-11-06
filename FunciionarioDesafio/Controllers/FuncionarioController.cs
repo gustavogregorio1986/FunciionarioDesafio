@@ -143,5 +143,45 @@ namespace FunciionarioDesafio.Controllers
             var resultado = await _service.BuscarIbmAsync(pagina, tamanho);
             return Ok(resultado);
         }
+
+        [HttpPut]
+        [Route("Atualizar/id")]
+        public async Task<IActionResult> Atualizar(int id, [FromBody] FuncionarioDTO dto)
+        {
+            if (id != dto.Id)
+                return BadRequest("ID da URL não confere com o corpo da requisição.");
+
+            var funcionario = new Funcionario
+            {
+                Id = dto.Id,
+                NomeFuncionario = dto.NomeFuncionario,
+                EmailFuncionario = dto.EmailFuncionario,
+                Cpf = dto.Cpf,
+                Celular = dto.Celular,
+                EmailComporativo = dto.EmailComporativo,
+                Funcao = dto.Funcao,
+                Datainicio = dto.Datainicio,
+                SituacaoEmpresa = dto.SituacaoEmpresa,
+                DateTermino = dto.DateTermino,
+                Salario = dto.Salario,
+                Empresa = dto.Empresa,
+                Situacao = dto.Situacao
+            };
+
+            await _service.AtualizarAsyc(funcionario);
+            return NoContent();
+
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Excluir(int id)
+        {
+            await _service.RemoverAsyc(id);
+            return NoContent();
+        }
+
+
+
+
     }
 }

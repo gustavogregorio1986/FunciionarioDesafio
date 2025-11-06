@@ -33,5 +33,11 @@ namespace FunciionarioDesafio.Data.Repository.Interface
         Task<(IEnumerable<Funcionario>, int)> BuscarSuspensoFiltroAsync(FuncionarioFiltroDTO filtro);
 
         Task<(IEnumerable<Funcionario>, int)> BuscarEmpresaFiltroAsync(FuncionarioFiltroDTO filtro);
+
+        Task AtualizarAsyc(Funcionario funcionario);
+
+        Task<Funcionario> ObterPorIdAsync(int id);
+
+        Task RemoverAsyc(int id);
     }
 }
