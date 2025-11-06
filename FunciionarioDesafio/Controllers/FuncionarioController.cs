@@ -36,7 +36,7 @@ namespace FunciionarioDesafio.Controllers
 
 
         [HttpPost]
-        [Route("Adicionar-funcionario")]
+        [Route("adicionar-funcionario")]
         public async Task<IActionResult> AdicionarFuncionario([FromBody] FuncionarioDTO dto)
         {
             var funcionario = _mapper.Map<Funcionario>(dto);
@@ -55,7 +55,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Listar-paginado")]
+        [Route("listar-paginado")]
         public async Task<IActionResult> Listar([FromQuery] FuncionarioFiltroDTO filtro)
         {
             var resultado = await _service.ListarPaginadoAsync(filtro);
@@ -71,7 +71,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-concluidos")]
+        [Route("buscar-concluidos")]
         public async Task<IActionResult> GetFuncionariosConcluidos([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarConcluidosAsync(pagina, tamanho);
@@ -81,7 +81,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-trabalhando")]
+        [Route("buscar-trabalhando")]
         public async Task<IActionResult> GetFuncionariosTrablahndo([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarTrabalhandoAsync(pagina, tamanho);
@@ -89,7 +89,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-desenvolvedor")]
+        [Route("buscar-desenvolvedor")]
         public async Task<IActionResult> GetFuncionariosDesenvolvedor([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarDesenvolvedorAsync(pagina, tamanho);
@@ -97,7 +97,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-enfermeira")]
+        [Route("buscar-enfermeira")]
         public async Task<IActionResult> GetFuncionariosEnfermeira([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarEnfermeiraAsync(pagina, tamanho);
@@ -105,7 +105,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-inativas")]
+        [Route("buscar-inativas")]
         public async Task<IActionResult> GetFuncionariosInativos([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarInativarAsync(pagina, tamanho);
@@ -113,7 +113,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-ativas")]
+        [Route("buscar-ativas")]
         public async Task<IActionResult> GetFuncionariosAtivas([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarAtivarAsync(pagina, tamanho);
@@ -121,7 +121,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-suspensos")]
+        [Route("buscar-suspensos")]
         public async Task<IActionResult> GetFuncionariosSuspenso([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarSuspensoAsync(pagina, tamanho);
@@ -129,7 +129,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-empresa")]
+        [Route("buscar-empresa")]
         public async Task<IActionResult> GetFuncionariosEmpresa([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarEmpresaAsync(pagina, tamanho);
@@ -137,7 +137,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpGet]
-        [Route("Buscar-ibm")]
+        [Route("buscar-ibm")]
         public async Task<IActionResult> BuscarIbmAsync([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
         {
             var resultado = await _service.BuscarIbmAsync(pagina, tamanho);
@@ -145,7 +145,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
         [HttpPut]
-        [Route("Atualizar/id")]
+        [Route("atualizar/id")]
         public async Task<IActionResult> Atualizar(int id, [FromBody] FuncionarioDTO dto)
         {
             if (id != dto.Id)
@@ -181,7 +181,7 @@ namespace FunciionarioDesafio.Controllers
         }
 
 
-        [HttpGet("Obter-media-salarialAsync")]
+        [HttpGet("obter-media-salarialAsync")]
         public async Task<IActionResult> MediaSalarial()
         {
             var media = await _service.ObterMediaSalarialAsync();
