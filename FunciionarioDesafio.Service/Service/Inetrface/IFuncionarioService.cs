@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FunciionarioDesafio.Service.Service.Inetrface
+namespace FunciionarioDesafio.Service.Service.Interface
 {
     public interface IFuncionarioService
     {
