@@ -36,7 +36,7 @@ namespace FunciionarioDesafio.Controllers
 
 
         [HttpPost]
-        [Route("dicionar-funcionario")]
+        [Route("adicionar-funcionario")]
         public async Task<IActionResult> AdicionarFuncionario([FromBody] FuncionarioDTO dto)
         {
             var funcionario = _mapper.Map<Funcionario>(dto);
