@@ -2,7 +2,7 @@ using FunciionarioDesafio.Data.Context;
 using FunciionarioDesafio.Data.Repository;
 using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Service.Service;
-using FunciionarioDesafio.Service.Service.Inetrface;
+using FunciionarioDesafio.Service.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
 

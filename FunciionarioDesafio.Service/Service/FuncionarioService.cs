@@ -2,7 +2,7 @@
 using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Dominio.Dominio;
 using FunciionarioDesafio.Dominio.Enum;
-using FunciionarioDesafio.Service.Service.Inetrface;
+using FunciionarioDesafio.Service.Service.Interface;
 using QuestPDF.Fluent;
 using System;
 using System.Collections;

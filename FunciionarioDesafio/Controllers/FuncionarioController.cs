@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using FunciionarioDesafio.Data.DTO;
 using FunciionarioDesafio.Dominio.Dominio;
-using FunciionarioDesafio.Service.Service.Inetrface;
+using FunciionarioDesafio.Service.Service.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
