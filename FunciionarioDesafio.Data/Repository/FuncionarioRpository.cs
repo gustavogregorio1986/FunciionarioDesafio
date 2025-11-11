@@ -279,6 +279,21 @@ namespace FunciionarioDesafio.Data.Repository
 
 
         }
+
+        public async Task<List<EstatisticaFaixaSalarialDTO>> ObterEstatisticaPorFaixaSalarialAsync()
+        {
+            return await _db.Funcionarios
+           .GroupBy(f =>
+               f.Salario <= 2000 ? "Até R$2.000" :
+               f.Salario <= 5000 ? "R$2.001–R$5.000" :
+               "Acima de R$5.000")
+           .Select(g => new EstatisticaFaixaSalarialDTO
+           {
+               Faixa = g.Key,
+               Quantidade = g.Count()
+           })
+           .ToListAsync();
+        }
     }
 }
 

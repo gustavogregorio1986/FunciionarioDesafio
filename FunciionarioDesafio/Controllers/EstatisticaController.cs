@@ -35,5 +35,12 @@ namespace FunciionarioDesafio.Controllers
             var resultado = await _service.GerarEstatisticaPorSituacoesAsync();
             return Ok(resultado);
         }
+
+        [HttpGet("por-faixa-salarial")]
+        public async Task<IActionResult> ObterPorFaixaSalarial()
+        {
+            var resultado = await _service.GerarEstatisticaFaixaSalarialAsync();
+            return Ok(resultado);
+        }
     }
 }

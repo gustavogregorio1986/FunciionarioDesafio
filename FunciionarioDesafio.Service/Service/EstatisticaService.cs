@@ -23,6 +23,11 @@ namespace FunciionarioDesafio.Service.Service
             return await _repository.ObterEstatisticaPorFuncaoAsync();
         }
 
+        public async Task<List<EstatisticaFaixaSalarialDTO>> GerarEstatisticaFaixaSalarialAsync()
+        {
+            return await _repository.ObterEstatisticaPorFaixaSalarialAsync();
+        }
+
         public async Task<List<EstatisticaPorEmpresaDTO>> GerarEstatisticaPorEmpresaAsync()
         {
             return await _repository.ObterEstatisticaPorEmpresaAsync();
