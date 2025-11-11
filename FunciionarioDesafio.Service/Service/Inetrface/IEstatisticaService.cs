@@ -12,5 +12,8 @@ namespace FunciionarioDesafio.Service.Service.Inetrface
         Task<List<EstatisticaPorFuncaoDTO>> GerarEstatisticaAsync();
 
         Task<List<EstatisticaPorEmpresaDTO>> GerarEstatisticaPorEmpresaAsync();
+
+        Task<List<EstatisticaSituacaoDTO>> GerarEstatisticaPorSituacoesAsync();
+
     }
 }

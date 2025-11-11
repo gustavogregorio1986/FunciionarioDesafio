@@ -264,6 +264,21 @@ namespace FunciionarioDesafio.Data.Repository
             })
             .ToListAsync();
         }
+
+        public async Task<List<EstatisticaSituacaoDTO>> ObterEstatisticaPorSituacoesAsync()
+        {
+            return await _db.Funcionarios
+             .GroupBy(f => new { f.SituacaoEmpresa, f.Situacao })
+             .Select(g => new EstatisticaSituacaoDTO
+             {
+                 SituacaoEmpresa = g.Key.SituacaoEmpresa.ToString(),
+                 SituacaoFuncionario = g.Key.Situacao.ToString(),
+                 Quantidade = g.Count()
+             })
+             .ToListAsync();
+
+
+        }
     }
 }
 

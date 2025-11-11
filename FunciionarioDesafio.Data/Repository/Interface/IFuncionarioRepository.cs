@@ -45,5 +45,7 @@ namespace FunciionarioDesafio.Data.Repository.Interface
         Task<List<EstatisticaPorFuncaoDTO>> ObterEstatisticaPorFuncaoAsync();
 
         Task<List<EstatisticaPorEmpresaDTO>> ObterEstatisticaPorEmpresaAsync();
+
+        Task<List<EstatisticaSituacaoDTO>> ObterEstatisticaPorSituacoesAsync();
     }
 }
