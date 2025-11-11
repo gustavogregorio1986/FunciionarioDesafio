@@ -2,6 +2,7 @@ using FunciionarioDesafio.Data.Context;
 using FunciionarioDesafio.Data.Repository;
 using FunciionarioDesafio.Data.Repository.Interface;
 using FunciionarioDesafio.Service.Service;
+using FunciionarioDesafio.Service.Service.Inetrface;
 using FunciionarioDesafio.Service.Service.Interface;
 using Microsoft.EntityFrameworkCore;
 using QuestPDF.Infrastructure;
@@ -25,6 +26,7 @@ builder.Services.AddDbContext<FuncionarioDesafioContext>(options =>
 
 builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRpository>();
 builder.Services.AddScoped<IFuncionarioService, FuncionarioService>();
+builder.Services.AddScoped<IEstatisticaService, EstatisticaService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

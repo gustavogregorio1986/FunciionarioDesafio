@@ -1,0 +1,25 @@
+﻿using FunciionarioDesafio.Service.Service.Inetrface;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace FunciionarioDesafio.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EstatisticaController : ControllerBase
+    {
+        private readonly IEstatisticaService _service;
+
+        public EstatisticaController(IEstatisticaService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet("por-funcao")]
+        public async Task<IActionResult> ObterPorFuncao()
+        {
+            var resultado = await _service.GerarEstatisticaAsync();
+            return Ok(resultado);
+        }
+    }
+}

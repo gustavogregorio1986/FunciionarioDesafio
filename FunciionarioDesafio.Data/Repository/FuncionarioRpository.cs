@@ -240,6 +240,18 @@ namespace FunciionarioDesafio.Data.Repository
            .Where(f => f.Salario > 0) // opcional: evita dividir por zero
            .AverageAsync(f => f.Salario);
         }
+
+        public async Task<List<EstatisticaPorFuncaoDTO>> ObterEstatisticaPorFuncaoAsync()
+        {
+            return await _db.Funcionarios
+            .GroupBy(f => f.Funcao)
+            .Select(g => new EstatisticaPorFuncaoDTO
+            {
+                Funcao = g.Key,
+                Quantidade = g.Count()
+            })
+            .ToListAsync();
+        }
     }
 }
 

@@ -41,5 +41,7 @@ namespace FunciionarioDesafio.Data.Repository.Interface
         Task RemoverAsyc(int id);
 
         Task<decimal> CalcularMediaSalarialAsync();
+
+        Task<List<EstatisticaPorFuncaoDTO>> ObterEstatisticaPorFuncaoAsync();
     }
 }
