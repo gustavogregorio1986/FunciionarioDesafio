@@ -10,5 +10,7 @@ namespace FunciionarioDesafio.Service.Service.Inetrface
     public interface IEstatisticaService
     {
         Task<List<EstatisticaPorFuncaoDTO>> GerarEstatisticaAsync();
+
+        Task<List<EstatisticaPorEmpresaDTO>> GerarEstatisticaPorEmpresaAsync();
     }
 }

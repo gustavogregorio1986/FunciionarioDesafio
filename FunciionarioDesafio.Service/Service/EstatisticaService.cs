@@ -22,5 +22,10 @@ namespace FunciionarioDesafio.Service.Service
         {
             return await _repository.ObterEstatisticaPorFuncaoAsync();
         }
+
+        public async Task<List<EstatisticaPorEmpresaDTO>> GerarEstatisticaPorEmpresaAsync()
+        {
+            return await _repository.ObterEstatisticaPorEmpresaAsync();
+        }
     }
 }

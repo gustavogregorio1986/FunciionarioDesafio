@@ -21,5 +21,12 @@ namespace FunciionarioDesafio.Controllers
             var resultado = await _service.GerarEstatisticaAsync();
             return Ok(resultado);
         }
+
+        [HttpGet("por-empresa")]
+        public async Task<IActionResult> ObterPorEmpresa()
+        {
+            var resultado = await _service.GerarEstatisticaPorEmpresaAsync();
+            return Ok(resultado);
+        }
     }
 }

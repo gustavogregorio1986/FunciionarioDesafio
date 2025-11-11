@@ -252,6 +252,18 @@ namespace FunciionarioDesafio.Data.Repository
             })
             .ToListAsync();
         }
+
+        public async Task<List<EstatisticaPorEmpresaDTO>> ObterEstatisticaPorEmpresaAsync()
+        {
+            return await _db.Funcionarios
+            .GroupBy(f => f.Funcao)
+            .Select(g => new EstatisticaPorEmpresaDTO
+            {
+                Empresa = g.Key,
+                QuantidadeFuncionarios = g.Count()
+            })
+            .ToListAsync();
+        }
     }
 }
 
